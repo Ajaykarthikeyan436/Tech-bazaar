@@ -7,7 +7,8 @@ const connectCloudinary = require("./config/cloudinary.js");
 const productRouter = require("./routes/productRoute.js");
 const cartRoute = require('./routes/cartRoute.js');
 const orderRouter = require("./routes/orderRoute.js");
-const adminRouter = require("./routes/adminRoute.js")
+const adminRouter = require("./routes/adminRoute.js");
+const connectDB = require("./config/mongodb.js");
 
 const app = express();
 
@@ -20,11 +21,7 @@ app.use(cors({
 
 app.use(express.json())
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI).then(()=>{
-    console.log("DB Connection Successfull")
-})
-
+connectDB();
 connectCloudinary();
 
 //api endpoints
@@ -37,6 +34,4 @@ app.get("/", (req, res) => {
   res.send("Backend is Working....");
 });
 
-app.listen(5000, () => {
-  console.log(`🚀 Server running.....`);
-});
+module.exports = app;
