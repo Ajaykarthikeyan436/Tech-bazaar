@@ -110,7 +110,7 @@ import cross_icon from './cross_icon.png'
 
 //Banner and Provider Section Images
 import banner1 from "./banner4.jpg"
-import banner2 from "./banner6.png"
+import banner2 from "./banner 6.png"
 import laptop from "./laptop-icon.jpg"
 import mobile from "./mobile-icon.png"
 import Camera from "./camera.jpeg"
