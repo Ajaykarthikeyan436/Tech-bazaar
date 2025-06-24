@@ -33,4 +33,8 @@ app.get("/", (req, res) => {
   res.send("Backend is Working....");
 });
 
-module.exports = app;
+app.listen(5000, () => {
+  console.log(`🚀 Server running.....`);
+});
+
+module.export = app;
