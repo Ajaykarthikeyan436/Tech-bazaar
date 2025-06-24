@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require('express');
 const cors = require("cors");
 const path = require('path')
-const mongoose = require('mongoose')
 const connectCloudinary = require("./config/cloudinary.js");
 const productRouter = require("./routes/productRoute.js");
 const cartRoute = require('./routes/cartRoute.js');
