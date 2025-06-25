@@ -19,7 +19,6 @@ app.use(cors({
     'https://tech-bazaar-admin.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'], // keep 'Authorization'
   credentials: true,
 }));
 
