@@ -12,7 +12,12 @@ const connectDB = require("./config/mongodb.js");
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174','https://tech-bazaar-frontend-weld.vercel.app'],
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:5174',
+    'https://tech-bazaar-frontend-weld.vercel.app',
+    'https://tech-bazaar-admin.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'], // keep 'Authorization'
   credentials: true,
