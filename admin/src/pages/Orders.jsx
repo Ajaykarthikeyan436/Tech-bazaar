@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { backendUrl, currency } from "../App";
 import axios from "axios";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { assets } from "../assets/assets";
 import { toast } from "react-toastify";
 
@@ -10,27 +10,31 @@ const Orders = () => {
     const [loading, setLoading] = useState(true);
 
     const fetchAllOrders = async () => {
-        try {
-            const user = getAuth().currentUser;
+        const auth = getAuth();
+
+        onAuthStateChanged(auth, async (user) => {
             if (!user) {
-                console.error("No user logged in");
+                console.error("No admin user logged in");
                 return;
             }
 
-            const firebaseToken = await user.getIdToken();
+            try {
+                const firebaseToken = await user.getIdToken();
+                console.log(firebaseToken)
 
-            const response = await axios.get( backendUrl + "/api/orders/list", {
-                headers: {
-                    Authorization: `Bearer ${firebaseToken}`,
-                },
-            });
+                const response = await axios.get(`${backendUrl}/api/orders/list`, {
+                    headers: {
+                        Authorization: `Bearer ${firebaseToken}`,
+                    },
+                });
 
-            setOrders(response.data.orders || []);
-            setLoading(false);
-        } catch (error) {
-            console.error("🔥 Error fetching orders:", error);
-            setLoading(false);
-        }
+                setOrders(response.data.orders || []);
+            } catch (error) {
+                console.error("🔥 Error fetching orders:", error);
+            } finally {
+                setLoading(false);
+            }
+        });
     };
 
     useEffect(() => {
@@ -49,11 +53,11 @@ const Orders = () => {
 
             const firebaseToken = await user.getIdToken();
 
-            const response = await axios.post( backendUrl + "/api/orders/status",{ orderId, status: newStatus },{
-                    headers: {
-                        Authorization: `Bearer ${firebaseToken}`,
-                    },
-                }
+            const response = await axios.post(backendUrl + "/api/orders/status", { orderId, status: newStatus }, {
+                headers: {
+                    Authorization: `Bearer ${firebaseToken}`,
+                },
+            }
             );
 
             if (response.data.success) {
@@ -79,7 +83,7 @@ const Orders = () => {
                 <div className="space-y-6">
                     {orders.map((order) => (
                         <div key={order._id} className="border p-4 rounded-xl shadow-md flex flex-col sm:flex-row sm:items-start gap-4">
-                            <img src={assets.parcel_icon} alt="Order" className="w-10 h-10"/>
+                            <img src={assets.parcel_icon} alt="Order" className="w-10 h-10" />
 
                             <div className="flex-1">
                                 <h3 className="text-lg font-semibold">
