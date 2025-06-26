@@ -181,7 +181,7 @@ const ShopContextProvider = (props) => {
 
     const getProductsData = async () => {
         try {
-            const response = await axios.get('/api/product/list',{
+            const response = await axios.get('/api/product/list', {
                 withCredentials: true
             });
 
@@ -199,6 +199,11 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         getProductsData()
     }, [])
+
+    useEffect(() => {
+        console.log("🧪 Final products state:", products);
+    }, [products]);
+
 
     const fetchCartData = async () => {
         const auth = getAuth();
