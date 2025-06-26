@@ -49,6 +49,7 @@ const ShopContextProvider = (props) => {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}` // ✅ Attach token here
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     userId: user.uid,
                     productId: itemId,
@@ -112,6 +113,7 @@ const ShopContextProvider = (props) => {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
+                    withCredentials: true
                 }
             );
 
@@ -179,7 +181,9 @@ const ShopContextProvider = (props) => {
 
     const getProductsData = async () => {
         try {
-            const response = await axios.get('/api/product/list');
+            const response = await axios.get('/api/product/list',{
+                withCredentials: true
+            });
 
             if (response.data.success) {
                 setProducts(response.data.products)
@@ -209,6 +213,7 @@ const ShopContextProvider = (props) => {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
+                withCredentials: true,
             });
 
             if (response.data.success && response.data.cart) {

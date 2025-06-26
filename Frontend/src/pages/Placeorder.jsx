@@ -58,7 +58,7 @@ const Placeorder = () => {
                         headers: {
                             Authorization: `Bearer ${token}`,
                             "Content-Type": "application/json"
-                        }
+                        },
                     })
                     if(data.success) {
                         navigate("/orders")
@@ -109,7 +109,8 @@ const Placeorder = () => {
                         headers: {
                             Authorization: `Bearer ${token}`,
                             "Content-Type": "application/json"
-                        }
+                        },
+                        withCredentials: true,
                     });
 
                     if (response.data.success) {
@@ -125,7 +126,8 @@ const Placeorder = () => {
                         headers: {
                             Authorization: `Bearer ${token}`,
                             "Content-Type": "application/json"
-                        }
+                        },
+                        withCredentials: true,
                     })
                     if (responseRazorpay.data.success) {
                         console.log("Backend Razorpay order:", responseRazorpay.data.order);
