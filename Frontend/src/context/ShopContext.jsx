@@ -180,15 +180,19 @@ const ShopContextProvider = (props) => {
     // }
 
     const getProductsData = async () => {
+        console.log("Calling Prodcuts Data")
         try {
             const response = await axios.get('/api/product/list', {
                 withCredentials: true
             });
 
+            console.log("API Response (PROD):", response.data)
+
             if (response.data.success) {
-                console.log(response.data.products)
+                console.log("Setting Products (PROD):", response.data.products)
                 setProducts(response.data.products)
             } else {
+                console.log(error)
                 toast.error(response.data.message)
             }
         } catch (error) {
