@@ -192,7 +192,6 @@ const ShopContextProvider = (props) => {
                 console.log("Setting Products (PROD):", response.data.products)
                 setProducts(response.data.products)
             } else {
-                console.log(error)
                 toast.error(response.data.message)
             }
         } catch (error) {
