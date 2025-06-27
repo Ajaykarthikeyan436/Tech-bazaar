@@ -15,8 +15,8 @@ app.use(cors({
   origin: [
     'http://localhost:5173', 
     'http://localhost:5174',
-    'https://tech-bazaar-frontend-weld.vercel.app',
-    'https://tech-bazaar-frontend-hclh25k70-ajays-projects-8ce49744.vercel.app',//fallback Url for frontend
+    'https://tech-bazaar-frontend-zeta.vercel.app',
+    'https://tech-bazaar-frontend-d1vorsh3y-ajays-projects-8ce49744.vercel.app',//fallback Url for frontend
     'https://tech-bazaar-admin.vercel.app',
     'https://tech-bazaar-admin-4d2acf2lu-ajays-projects-8ce49744.vercel.app'//fallback Url for admin panel
   ],
