@@ -182,7 +182,7 @@ const ShopContextProvider = (props) => {
     const getProductsData = async () => {
         console.log("Calling Prodcuts Data")
         try {
-            const response = await axios.get('/api/product/list', {
+            const response = await axios.get( backendUrl +'/api/product/list', {
                 withCredentials: true
             });
 
