@@ -40,14 +40,13 @@ const ShopContextProvider = (props) => {
                 return;
             }
 
-            // 🔐 Get Firebase token
             const token = await user.getIdToken();
 
             const response = await fetch(backendUrl + "/api/cart/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}` // ✅ Attach token here
+                    Authorization: `Bearer ${token}`
                 },
                 credentials: "include",
                 body: JSON.stringify({
@@ -85,21 +84,6 @@ const ShopContextProvider = (props) => {
         return totalCount;
     };
 
-
-    // const getCartCount = () => {
-    //     let totalCount = 0;
-    //     for (const item in cartItems) {
-    //         try {
-    //             if (cartItems[item] > 0) {
-    //                 totalCount += cartItems[item];
-    //             }
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     }
-    //     return totalCount;
-    // };
-
     const updateQuantity = async (productId, quantity) => {
         try {
             const auth = getAuth();
@@ -134,16 +118,6 @@ const ShopContextProvider = (props) => {
         }
     };
 
-
-    // const updateQuantity = async (itemId, quantity) => {
-
-    //     let cartData = structuredClone(cartItems)
-
-    //     cartData[itemId] = quantity;
-
-    //     setCartItems(cartData);
-    // }
-
     const getCartAmount = () => {
         let totalAmount = 0;
 
@@ -159,37 +133,13 @@ const ShopContextProvider = (props) => {
         return totalAmount;
     };
 
-
-    // const getCartAmount = () => {
-    //     let totalAmount = 0;
-    //     for (const item in cartItems) {
-
-    //         let itemInfo = products.find((product) => product._id === item);
-
-    //         try {
-    //             if (cartItems[item] > 0) {
-    //                 totalAmount += itemInfo.price * cartItems[item];
-    //             }
-    //         }
-    //         catch (error) {
-    //             console.log(error)
-    //         }
-
-    //     }
-    //     return totalAmount;
-    // }
-
     const getProductsData = async () => {
-        console.log("Calling Prodcuts Data")
         try {
             const response = await axios.get( backendUrl +'/api/product/list', {
                 withCredentials: true
             });
 
-            console.log("API Response (PROD):", response.data)
-
             if (response.data.success) {
-                console.log("Setting Products (PROD):", response.data.products)
                 setProducts(response.data.products)
             } else {
                 toast.error(response.data.message)
@@ -203,11 +153,6 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         getProductsData()
     }, [])
-
-    useEffect(() => {
-        console.log("🧪 Final products state:", products);
-    }, [products]);
-
 
     const fetchCartData = async () => {
         const auth = getAuth();

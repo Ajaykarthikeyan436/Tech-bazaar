@@ -19,7 +19,6 @@ function Navbar() {
 
         const sendCartRequest = async (user) => {
             const token = await user.getIdToken();
-            console.log(token)
 
             const response = await fetch(backendUrl + '/api/cart/get', {
                 method: 'GET',

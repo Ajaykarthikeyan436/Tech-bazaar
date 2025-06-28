@@ -28,7 +28,7 @@ const Orders = () => {
                     },
                 });
 
-                setOrders(response.data.orders || []);
+                setOrders(response.data.orders.reverse() || []);
             } catch (error) {
                 console.error("🔥 Error fetching orders:", error);
             } finally {
