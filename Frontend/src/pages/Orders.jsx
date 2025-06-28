@@ -32,8 +32,7 @@ const Orders = () => {
             );
 
             if (response.data.success) {
-                console.log("Orders fetched:", response.data.orders);
-                setOrderData(response.data.orders);
+                setOrderData(response.data.orders.reverse());
             } else {
                 toast.error(response.data.message);
             }

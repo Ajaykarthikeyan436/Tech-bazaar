@@ -20,7 +20,6 @@ const Orders = () => {
 
             try {
                 const firebaseToken = await user.getIdToken();
-                console.log(firebaseToken)
 
                 const response = await axios.get(`${backendUrl}/api/orders/list`, {
                     headers: {
