@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { FaShoppingBag } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import auth from "../config/firebase";
@@ -83,7 +82,7 @@ function Navbar() {
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
                 <img onClick={() => setShowSearch(true)} src={assets.search_icon} alt="search_icon" className="w-5 h-5 cursor-pointer" />
                 <div className="relative group">
                     <img src={assets.profile_icon} alt="profile_icon" className="w-5 h-5 cursor-pointer" />
@@ -143,7 +142,7 @@ function Navbar() {
                     </div>
                     <NavLink onClick={() => setVisible(false)} to="/" className="p-1 px-3 rounded-md">Home</NavLink>
                     <NavLink onClick={() => setVisible(false)} to="/collection" className="p-1 px-3 rounded-md">Collections</NavLink>
-                    <NavLink onClick={() => setVisible(false)} to="/Company" className="p-1 px-3 rounded-md">About</NavLink>
+                    <NavLink onClick={() => setVisible(false)} to="/About" className="p-1 px-3 rounded-md">About</NavLink>
                     <NavLink onClick={() => setVisible(false)} to="/contact" className="p-1 px-3 rounded-md">Contact</NavLink>
                 </div>
             </div>
