@@ -88,10 +88,10 @@ function Navbar() {
                     <img src={assets.profile_icon} alt="profile_icon" className="w-5 h-5 cursor-pointer" />
                     <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-20">
                         <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-                            <NavLink className="cursor-pointer hover:text-black">
+                            <NavLink className="cursor-pointer border rounded-md px-3 py-1.5">
                                 < p>My Profile</ p>
                             </NavLink>
-                            <NavLink to='/orders' className="cursor-pointer hover:text-black">
+                            <NavLink to='/orders' className="cursor-pointer border rounded-md px-3 py-1.5 active:bg-black">
                                 < p>Orders</ p>
                             </NavLink>
                             {
