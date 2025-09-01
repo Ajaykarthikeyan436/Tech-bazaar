@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
 
-    const { currency, cartItems, updateQuantity, backendUrl, cartData, setCartData, fetchCartData } = useContext(ShopContext);
+    const { currency, updateQuantity, backendUrl, cartData, setCartData, fetchCartData } = useContext(ShopContext);
 
     const navigate = useNavigate();
 
@@ -51,26 +51,6 @@ const Cart = () => {
             console.error("Error deleting item from cart:", error.message);
         }
     };
-
-    // useEffect(() => {
-
-    //     const userData = [];
-    //     for (const item in cartItems) {
-    //         try {
-    //             if (cartItems[item] > 0) {
-    //                 userData.push({
-    //                     _id: item,
-    //                     quantity: cartItems[item]
-    //                 })
-    //             }
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     }
-
-    //     setCartData(userData);
-
-    // }, [cartItems])
 
     return (
         <div className="border-t pt-14">
