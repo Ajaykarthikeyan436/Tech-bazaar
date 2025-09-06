@@ -41,11 +41,6 @@ const placeOrder = async (req, res) => {
     }
 }
 
-//Placing order using Stripe Method
-const placeOrderStripe = async (req, res) => {
-
-}
-
 //Placing order using Razorpay Method
 const placeOrderRazorpay = async (req, res) => {
 
@@ -84,31 +79,6 @@ const placeOrderRazorpay = async (req, res) => {
         console.log(error)
         res.json({ success:false, message:error.message })
     }
-
-    // const instance = new Razorpay({
-    //     key_id: process.env.RAZORPAY_KEY_ID,
-    //     key_secret: procees.env.RAZORPAY_SECRET
-    // })
-
-    // try {
-
-    //     const { amount } = req.body
-
-    //     const options = {
-    //         amount: amount * 100,
-    //         currency: "INR",
-    //         receipt: `receipt_order_${Data.now()}`
-    //     }
-
-    //     const order = await instance.orders.create(options)
-
-    //     res.json({ success: true, orderId: order.id, amount: order.amount, currency: order.currency })
-
-    // } catch (error) {
-    //     console.log(error)
-    //     res.json({ success: false, message: error.message })
-    // }
-
 }
 
 //Verify Razorpay
@@ -196,4 +166,4 @@ const updateStatus = async (req, res) => {
 
 }
 
-module.exports = { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus, verifyRazorpay }
+module.exports = { placeOrder, placeOrderRazorpay, allOrders, userOrders, updateStatus, verifyRazorpay }
