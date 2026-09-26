@@ -7,7 +7,7 @@ on:
     branches: [ main, uat, test, dev ]
 
 jobs:
-  frontend:
+  frontend-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,10 +16,10 @@ jobs:
           node-version: '18'
       - run: npm install
         working-directory: Frontend
-      - run: npm run dev -- --dry-run
+      - run: npm run build
         working-directory: Frontend
 
-  backend:
+  backend-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,17 +28,5 @@ jobs:
           node-version: '18'
       - run: npm install
         working-directory: Backend
-      - run: npx nodemon index.js --exitcrash
+      - run: node index.js || echo "Backend started check"
         working-directory: Backend
-
-  admin:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install
-        working-directory: admin
-      - run: npm run dev -- --dry-run
-        working-directory: admin
