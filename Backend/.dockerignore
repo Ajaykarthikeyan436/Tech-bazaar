@@ -1,0 +1,35 @@
+# Node.js dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment files
+.env
+.env.*
+
+# Git files
+.git
+.gitignore
+
+# Docker files
+.dockerignore
+Dockerfile*
+
+# Logs
+*.log
+
+# OS / Editor files
+.DS_Store
+*.swp
+*.swo
+*.tmp
+*.bak
+Thumbs.db
+
+# Build / Coverage outputs
+dist
+build
+coverage
+
+# Documentation / Misc
+*.md
