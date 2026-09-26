@@ -30,3 +30,4 @@ jobs:
         working-directory: Backend
       - run: node index.js || echo "Backend started check"
         working-directory: Backend
+
