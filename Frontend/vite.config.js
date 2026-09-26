@@ -11,4 +11,9 @@ export default defineConfig({
       '/api': 'http://localhost:5000', // your backend URL
     },
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+  }
 })
