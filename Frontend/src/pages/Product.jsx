@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
@@ -13,7 +13,7 @@ const Product = () => {
     const [image, setImage] = useState('');
 
 
-    const fetchProductData = async () => {
+    const fetchProductData = useCallback(async () => {
 
         products.map((item) => {
             if (item._id === productId) {
@@ -23,11 +23,11 @@ const Product = () => {
                 return null
             }
         })
-    }
+    }, [products, productId]);
 
     useEffect(() => {
         fetchProductData();
-    }, [productId])
+    }, [productId, fetchProductData]);
 
     return productData ? (
         <div className="mx-5 border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">

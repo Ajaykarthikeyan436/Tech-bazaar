@@ -13,7 +13,7 @@ import Collection from "./pages/Collection"
 import Footer from "./components/Footer"
 import Product from "./pages/Product"
 import Cart from "./pages/Cart"
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import About from "./pages/About"
 

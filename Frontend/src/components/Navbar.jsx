@@ -11,7 +11,7 @@ function Navbar() {
     const [visible, setVisible] = useState(false);
     const { setShowSearch, getCartCount } = useContext(ShopContext);
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
         const firebaseAuth = getAuth();
@@ -40,7 +40,7 @@ function Navbar() {
 
         // Cleanup subscription on unmount
         return () => unsubscribe();
-    }, []);
+    }, [backendUrl]);
 
 
     useEffect(() => {

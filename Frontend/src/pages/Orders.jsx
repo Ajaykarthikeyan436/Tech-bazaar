@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title";
 import axios from 'axios'
@@ -10,7 +10,7 @@ const Orders = () => {
 
     const [orderData, setOrderData] = useState([])
 
-    const loadOrderData = async () => {
+    const loadOrderData = useCallback(async () => {
         const auth = await import("firebase/auth");
         const user = auth.getAuth().currentUser;
 
@@ -40,11 +40,11 @@ const Orders = () => {
             console.error("Order fetch failed", error);
             toast.error("Order not listed")
         }
-    };
+    }, [backendUrl]);
 
     useEffect(() => {
         loadOrderData();
-    }, [])
+    }, [loadOrderData]);
 
     return (
         <div className="border-t pt-16">

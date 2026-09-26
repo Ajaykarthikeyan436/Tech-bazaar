@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title"
 import { assets } from "../assets/frontend_assets/assets";
@@ -19,7 +19,7 @@ const Cart = () => {
             if (user) fetchCartData();
         });
         return () => unsubscribe();
-    }, []);
+    }, [fetchCartData]);
 
 
     const removeFromCart = async (productId) => {
