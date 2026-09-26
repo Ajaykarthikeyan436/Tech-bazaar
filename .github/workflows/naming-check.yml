@@ -1,0 +1,21 @@
+name: Check Naming Conventions
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  naming-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run naming convention check
+        run: |
+          echo "Checking file and folder naming conventions..."
+          # Fail if frontend JSX files are not PascalCase
+          find src -type f -name "*.jsx" | grep -vE '/[A-Z][a-zA-Z0-9]*\.jsx$' && echo "❌ JSX files must be PascalCase" && exit 1 || echo "✅ JSX files OK"
+
+          # Fail if backend JS files are not camelCase
+          find backend -type f -name "*.js" | grep -vE '/[a-z][a-zA-Z0-9]*\.js$' && echo "❌ Backend JS files must be camelCase" && exit 1 || echo "✅ Backend JS files OK"
