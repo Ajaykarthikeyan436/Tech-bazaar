@@ -1,9 +1,9 @@
 // src/App.test.jsx
-import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
-import { test, expect } from 'vitest'
-import App from './App'
-import ShopContextProvider from './context/ShopContext'
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { test, expect } from 'vitest';
+import App from './App';
+import ShopContextProvider from './context/ShopContext';
 
 test('renders login link in navbar', () => {
   render(
@@ -12,6 +12,6 @@ test('renders login link in navbar', () => {
         <App />
       </ShopContextProvider>
     </BrowserRouter>
-  )
-  expect(screen.getByText(/login/i)).toBeInTheDocument()
-})
+  );
+  expect(screen.getByText(/login/i)).toBeInTheDocument();
+});

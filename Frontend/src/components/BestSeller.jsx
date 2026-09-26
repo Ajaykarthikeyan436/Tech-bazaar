@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ShopContext } from "../context/ShopContext";
-import Title from "./Title";
-import ProductItem from "./ProductItem";
+import React, { useContext, useEffect, useState } from 'react';
+import { ShopContext } from '../context/ShopContext';
+import Title from './Title';
+import ProductItem from './ProductItem';
 
 function BestSeller() {
   const { products } = useContext(ShopContext);
@@ -16,7 +16,7 @@ function BestSeller() {
   return (
     <div className="my-10 m-5">
       <div className="text-center text-3xl py-8">
-        <Title text1={"BEST"} text2={"SELLERS"} />
+        <Title text1={'BEST'} text2={'SELLERS'} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
           doloremque ipsa temporibus neque consequuntur molestiae architecto,
