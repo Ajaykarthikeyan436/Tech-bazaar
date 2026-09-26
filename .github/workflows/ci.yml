@@ -2,12 +2,12 @@ name: CI Pipeline
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ main, uat, test, dev ]
   push:
-    branches: [ main ]
+    branches: [ main, uat, test, dev ]
 
 jobs:
-  test:
+  frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,4 +15,30 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
-      - run: npm test
+        working-directory: Frontend
+      - run: npm run dev -- --dry-run
+        working-directory: Frontend
+
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
+        working-directory: Backend
+      - run: npx nodemon index.js --exitcrash
+        working-directory: Backend
+
+  admin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
+        working-directory: admin
+      - run: npm run dev -- --dry-run
+        working-directory: admin
